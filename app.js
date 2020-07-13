@@ -43,7 +43,8 @@ MongoClient.connect('mongodb+srv://baraksaidoff:Chaingunman510@cluster0-oajzo.mo
     app.post('/contacts', (req, res) => {
         const contact = new Contact({
             name: req.body.name,
-            number: req.body.number
+            number: req.body.number,
+            address: req.body.address
         });
         
         contactsCollection.insertOne(contact)
