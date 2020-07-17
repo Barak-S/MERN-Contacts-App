@@ -1,0 +1,3 @@
+[submodule "MERN-contacts-app-react-client"]
+	path = MERN-contacts-app-react-client
+	url = git@github.com:Barak-S/MERN-contacts-app-react-client.git
