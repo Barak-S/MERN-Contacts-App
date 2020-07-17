@@ -16,6 +16,7 @@ var cors = require('cors');
 app.use(cors())
 
 const MongoClient = require('mongodb').MongoClient
+const ObjectId = require('mongodb').ObjectID
 
 MongoClient.connect('mongodb+srv://baraksaidoff:Chaingunman510@cluster0-oajzo.mongodb.net/contacts-mern-app?retryWrites=true&w=majority', {
     useUnifiedTopology: true })
@@ -62,8 +63,7 @@ MongoClient.connect('mongodb+srv://baraksaidoff:Chaingunman510@cluster0-oajzo.mo
     })
 
     app.delete('/contacts', (req, res) => {
-        console.log('trying to remove', req.body.name, req.body.number)
-        contactsCollection.deleteOne({ name: req.body.name, number: req.body.number })
+          contactsCollection.deleteOne({ "_id": ObjectId(req.body._id) })
     })
     // .then(result => {
     //     if (result.deletedCount === 0) {
