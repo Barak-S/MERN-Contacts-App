@@ -57,13 +57,15 @@ MongoClient.connect('mongodb+srv://baraksaidoff:Chaingunman510@cluster0-oajzo.mo
     })
 
     app.put('/contacts', (req,res)=>{
-        const foundContact = Contact.findById(req.body._id)
-        foundContact? console.log("found in db", foundContact): console.log("didnt find:(")
-        foundContact.update({name: req.body.name, number: req.body.number})
+
+      let bodyToResp={name: req.body.name, number: req.body.number, address: req.body.address, _id: req.body._id}
+
+        contactsCollection.updateOne({ _id: ObjectId(req.body._id)}, {$set: {name: req.body.name, number: req.body.number, address: req.body.address} })
+        res.json(bodyToResp)
     })
 
     app.delete('/contacts', (req, res) => {
-          contactsCollection.deleteOne({ "_id": ObjectId(req.body._id) })
+        contactsCollection.deleteOne({ _id: ObjectId(req.body._id) })
     })
     // .then(result => {
     //     if (result.deletedCount === 0) {
