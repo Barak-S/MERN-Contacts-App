@@ -58,7 +58,7 @@ MongoClient.connect('mongodb+srv://baraksaidoff:Chaingunman510@cluster0-oajzo.mo
 
     app.put('/contacts', (req,res)=>{
 
-      let bodyToResp={name: req.body.name, number: req.body.number, address: req.body.address, _id: req.body._id}
+    //   let bodyToResp={name: req.body.name, number: req.body.number, address: req.body.address, _id: req.body._id}
 
         contactsCollection.updateOne({ _id: ObjectId(req.body._id)}, {$set: {name: req.body.name, number: req.body.number, address: req.body.address} })
         res.json(bodyToResp)
